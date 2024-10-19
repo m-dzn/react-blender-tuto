@@ -2,3 +2,13 @@
   text-align: center;
   height: 100vh;
 }
+
+.bottom-nav {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 16px;
+}

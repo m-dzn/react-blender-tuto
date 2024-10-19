@@ -1,9 +1,13 @@
 import { useGLTF } from "@react-three/drei";
+import { forwardRef, useMemo } from "react";
 
-const Model = ({ url, position, ...rest }) => {
-  const gltf = useGLTF(url, true);
+const Model = forwardRef(({ url, position, ...rest }, ref) => {
+  const { scene } = useGLTF(url, true);
+  const copiedScene = useMemo(() => scene.clone(), [scene]);
 
-  return <primitive object={gltf.scene} position={position} {...rest} />;
-};
+  return (
+    <primitive ref={ref} object={copiedScene} position={position} {...rest} />
+  );
+});
 
 export default Model;
